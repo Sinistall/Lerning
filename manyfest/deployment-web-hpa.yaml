@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-hpa
+  labels:
+    app: delpoy-with-hpa
+    owner: DiadykAndii
+spec:
+  selector:
+    matchLabels:
+      project: hpa-app
+  template:
+    metadata:
+      labels:
+        project: hpa-app
+    spec:
+      containers:
+        - name: web-server
+          image: tomcat:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: autoscaler-pods
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v2beta1v1
+    kind: Deployment
+    name: deployment-hpa
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 50

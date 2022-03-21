@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  labels:
+    app: web-app
+    owner: DiadykAndrii
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      project: test-deploy
+  template:
+    metadata:
+      labels:
+        project: test-deploy
+    spec:
+      containers:
+        - name: nginx-server
+          image: nginx:latest
+          ports:
+            - containerPort: 80
