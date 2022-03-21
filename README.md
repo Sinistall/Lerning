@@ -1,2 +1,2 @@
 # Lerning
-Lern DevOps
+Lern DevOps tools
