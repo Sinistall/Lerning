@@ -1,0 +1,4 @@
+---
+# tasks file for add_sitefolder
+- name: Add Folder
+  copy: src={{ role_path }}/files/ dest={{ dest_folder }} mode=0555

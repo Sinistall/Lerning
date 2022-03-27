@@ -1,0 +1,7 @@
+---
+- name: Install Apache
+  yum:
+    name: "{{ web_server }}"
+    state: latest
+  notify:
+    - Restart Web server

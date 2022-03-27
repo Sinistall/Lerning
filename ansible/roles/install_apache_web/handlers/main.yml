@@ -1,0 +1,6 @@
+---
+# handlers file for roles/install_apache_web
+- name: Restart Web server
+  service:
+    name: "{{ web_server }}"
+    state: restarted

@@ -1,0 +1,8 @@
+---
+- name: Install Apache
+  hosts: all
+  become: yes
+
+  roles:
+  - install_apache_web
+  - add_sitefolder

@@ -1,0 +1,23 @@
+---
+- name: Upload Web Server with Apache
+  hosts: all
+  become: yes
+
+  vars:
+    scr_file: /home/andriy/Documents/html
+    dest_file: /var/www/
+
+  tasks:
+  - name: Install Apache WebServer
+    apt: name=apache2 state=latest
+
+  - name: Copy site to server
+    copy: src={{ scr_file }} dest={{ dest_file }} mode=0555
+    notify: Restart WebServer
+
+  - name: Start WebServer
+    service: name=apache2 state=started enabled=yes
+
+  handlers:
+  - name: Restart WebServer
+    service: name=apache2 state=restarted
