@@ -13,7 +13,7 @@ resource "aws_instance" "myweb-server" {
   ami                    = "ami-0dcc0ebde7b2e00db"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.For_Web-server.id]
-  user_data              = file("user_data.sh")
+  user_data              = file("user_data.sh")   #static file
   tags = {
     Name="Linux_Webserver"
     ENV="prod"
@@ -50,4 +50,3 @@ resource "aws_security_group" "For_Web-server" {
     Owner="Diadyk Andriy"
   }
 }
- 
