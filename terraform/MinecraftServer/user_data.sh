@@ -1,14 +1,12 @@
 #!/bin/bash
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get install default-jdk -y
-sudo apt-get install screen -y
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install wget default-jdk openjdk-17-jdk openjdk-17-jdk-headless libc6-i386 libc6-x32 -y
+
 mkdir minecraft
 cd minecraft
-sudo apt-get install wget -y
 
 ###wget http://surl.li/dtah
 ###sudo mv dtah server.jar
+
 wget https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar
 
 echo "eula=true" > eula.txt
@@ -61,6 +59,6 @@ online-mode=false
 allow-flight=false
 max-world-size=29999984
 EOF
-sleep 20
+sleep 30
 
 sudo java -Xms512M -Xmx1024M -jar server.jar
