@@ -28,6 +28,12 @@ resource "aws_instance" "ServerJenkins" {
     security_groups = [aws_security_group.jenkins-ssh.id]
     user_data = file("user_data.sh")
 
+    lifecycle {
+      create_before_destroy = true
+    }
+
+    depends_on = [aws_security_group.jenkins-ssh]
+
     tags = {
       Name = "ServerETC"
       Terraform = "True"
