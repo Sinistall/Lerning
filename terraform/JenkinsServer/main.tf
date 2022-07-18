@@ -25,7 +25,7 @@ resource "aws_instance" "ServerJenkins" {
     ami = "ami-065deacbcaac64cf2"
     instance_type = "t2.micro"
     key_name = "keyfrankfurt"
-    security_groups = [aws_security_group.jenkins-ssh.id]
+    vpc_security_group_ids = [aws_security_group.jenkins-ssh.id]
     user_data = file("user_data.sh")
 
     lifecycle {
