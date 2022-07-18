@@ -15,7 +15,7 @@ resource "aws_security_group" "for_web_server" {
   name        = "Security Group for WebServer"
 
   dynamic "ingress" {
-    for_each = ["80", "433"]
+    for_each = ["80", "433", "22"]
     content {
       from_port        = ingress.value
       to_port          = ingress.value
@@ -41,6 +41,7 @@ resource "aws_launch_configuration" "for_web_server" {
     name_prefix = "HighlyAvailable-WebServer-"
     image_id = data.aws_ami.for_web_server.id
     instance_type = "t2.micro"
+    key_name = "keyfrankfurt"
     security_groups = [aws_security_group.for_web_server.id]
     user_data = file("user_data.sh")
 

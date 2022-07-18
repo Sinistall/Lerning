@@ -1,6 +1,4 @@
-provider "aws" {
-  region = "eu-central-1"
-}
+provider "aws" {}
 
 resource "aws_security_group" "jenkins-ssh" {
     name = "Jenkins-SG"
