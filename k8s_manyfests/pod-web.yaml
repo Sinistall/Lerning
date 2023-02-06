@@ -5,7 +5,7 @@ metadata:
   labels:
     env: prod
     app: main
-    owner: "DiadykAndrii"
+    owner: "Diadyk_Andrii"
 spec:
   containers:
     - name: nginx-conteiner
